@@ -32,7 +32,7 @@ async def on_message(message: discord.Message):
     print(message.content)
     print(message.author)
     print(message.channel)
-    print(f"Message in music channel?: {message.channel=='music'}")
+    print(f"Message in music channel?: {message.channel.name =='music'}")
     
     if message.author == client.user:
         return
