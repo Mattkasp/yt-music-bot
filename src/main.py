@@ -4,8 +4,8 @@ import os
 import discord
 
 from dotenv import load_dotenv
-from utils import look_for_url
-from yt_music import add_to_playlist, get_video_id
+from .utils import look_for_url
+from .yt_music import add_to_playlist, get_video_id
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -55,5 +55,5 @@ async def on_message(message: discord.Message):
                 
             
                 
-client.run(TOKEN)
+
 
