@@ -37,20 +37,19 @@ def get_video_id(url):
         return None
     
 def add_to_playlist(playlistId, videoId):
-    try:
-        ytmusic.add_playlist_items(playlistId, [videoId])
+    print(f"Adding {videoId} to playlist {playlistId}")
+    response = ytmusic.add_playlist_items(playlistId, [videoId])
+    print(f"Added {videoId} to playlist {playlistId}")
+    return response
     
-    except ytmusicapi.exceptions.YTMusicServerError as e:
-        
-        print(f"YTMusicServerError: {e}. videoId: {videoId}")
-        raise e
-    return True
+    
+    
 
 
 test_url = "https://music.youtube.com/watch?v=zVCzaHPSomc&list=OLAK5uy_kLsYEcEuTrC_mhxf0Kv-VqrE09Db8zr_0"
 test_youtubebe_url = "https://youtu.be/i3lQxwTpBaY?si=9YU35-i0YUL-ei-3"
 
-test_id = "4fAliEgjRac"
+test_id = "L_cOw7BFl_8"
 test_urls = ["https://youtu.be/QcxdDafgmYc?si=r0ViWSrFH1SSaouB", "https://youtu.be/i3lQxwTpBaY?si=9YU35-i0YUL-ei-3", "https://youtu.be/P6BwTGKfY44?si=PL4lUX-g7RrwGpIx", "https://youtu.be/njI-6OPsW90?si=UUiT-YaOmXSNE1fs"]
 
 

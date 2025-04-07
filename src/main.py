@@ -28,12 +28,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message: discord.Message):
-    print("Message received")
-    print(message.content)
-    print(message.author)
-    print(message.channel)
-    print(f"Message in music channel?: {message.channel.name =='music'}")
-    
+
     if message.author == client.user:
         return
     if message.channel.name == 'music':
@@ -45,14 +40,12 @@ async def on_message(message: discord.Message):
                 id = get_video_id(url)
                 if id:
                     playlistId = "PL-VgiLr5Ut0xX5efEfoUPTPC8_XH_E2U0"
-                    try:
-                        response = await add_to_playlist(playlistId, id)
-                        if response:
-                            await message.channel.send("Added to playlist")
-                            
-                    except Exception as e:
-                        print(f"Error adding to playlist: {e}")
-                        await message.channel.send("Error adding to playlist")
+                    
+                    response = add_to_playlist(playlistId, id)
+                    if response:
+                        await message.channel.send("Added to playlist")
+
+     
 
                 else:
                     print("No video ID found")
