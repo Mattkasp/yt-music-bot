@@ -33,7 +33,7 @@ async def on_message(message: discord.Message):
         return
     if message.channel.name == 'music':
         
-        if 'youtube.com' in message.content:
+        if 'youtube.com' in message.content or 'youtu.be' in message.content:
             print("Youtube URL found")
             url = look_for_url(message)
             if url:
