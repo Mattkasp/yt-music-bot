@@ -37,7 +37,7 @@ async def on_message(message: discord.Message):
     if message.author == client.user:
         return
     if message.channel.name == 'music':
-        print("Message in music channel")
+        
         if 'youtube.com' in message.content:
             print("Youtube URL found")
             url = look_for_url(message)
@@ -45,11 +45,15 @@ async def on_message(message: discord.Message):
                 id = get_video_id(url)
                 if id:
                     playlistId = "PL-VgiLr5Ut0xX5efEfoUPTPC8_XH_E2U0"
-                    success = add_to_playlist(playlistId, id)
-                    if success:
-                        await message.channel.send("Added to playlist")
-                    else:
-                        await message.channel.send("Failed to add to playlist")
+                    try:
+                        response = await add_to_playlist(playlistId, id)
+                        if response:
+                            await message.channel.send("Added to playlist")
+                            
+                    except Exception as e:
+                        print(f"Error adding to playlist: {e}")
+                        await message.channel.send("Error adding to playlist")
+
                 else:
                     print("No video ID found")
                 
