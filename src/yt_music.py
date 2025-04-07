@@ -22,7 +22,7 @@ ytmusic = YTMusic(authfile, oauth_credentials=OAuthCredentials(client_id=test_cl
 
 
 print("YTMusic API initialized")
-playlistId = "PL-VgiLr5Ut0xX5efEfoUPTPC8_XH_E2U0"
+#playlistId = "PL-VgiLr5Ut0xX5efEfoUPTPC8_XH_E2U0"
 
 
 def get_video_id(url):
@@ -94,4 +94,3 @@ def get_video_id_from_share_link(url):
 
 
 
-add_to_playlist(playlistId, test_id)
