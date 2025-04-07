@@ -9,13 +9,17 @@ from dotenv import load_dotenv
 import ytmusicapi.exceptions
 
 authfile = path.join(path.dirname(__file__),'..', 'oauth.json')
-load_dotenv()
+env_path = path.join(path.dirname(__file__),'..', '.env')
+load_dotenv(env_path)
 
-test_client_id = os.getenv("YT_CLIENT_ID")
-test_client_secret = os.getenv("YT_CLIENT_SECRET")
+test_client_id = os.getenv("YOUTUBE_MUSIC_CLIENT_ID")
+test_client_secret = os.getenv("YOUTUBE_MUSIC_CLIENT_SECRET")
 
+print(f"Client ID: {test_client_id}")
+print(f"Client Secret: {test_client_secret}")
 
 ytmusic = YTMusic(authfile, oauth_credentials=OAuthCredentials(client_id=test_client_id, client_secret=test_client_secret))
+
 
 print("YTMusic API initialized")
 playlistId = "PL-VgiLr5Ut0xX5efEfoUPTPC8_XH_E2U0"
