@@ -4,8 +4,10 @@ import os
 import discord
 
 from dotenv import load_dotenv
-from .utils import look_for_url
+from .utils import look_for_url, logger
 from .yt_music import add_to_playlist, get_video_id
+
+
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -43,7 +45,7 @@ async def on_message(message: discord.Message):
                     
                     response = add_to_playlist(playlistId, id)
                     if response:
-                        await message.channel.send("Added to playlist")
+                        logger.info(f"Added {id} to playlist {playlistId}")
 
      
 

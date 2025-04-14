@@ -15,14 +15,13 @@ load_dotenv(env_path)
 test_client_id = os.getenv("YOUTUBE_MUSIC_CLIENT_ID")
 test_client_secret = os.getenv("YOUTUBE_MUSIC_CLIENT_SECRET")
 
-print(f"Client ID: {test_client_id}")
-print(f"Client Secret: {test_client_secret}")
+
 
 ytmusic = YTMusic(authfile, oauth_credentials=OAuthCredentials(client_id=test_client_id, client_secret=test_client_secret))
 
 
 print("YTMusic API initialized")
-#playlistId = "PL-VgiLr5Ut0xX5efEfoUPTPC8_XH_E2U0"
+
 
 
 def get_video_id(url):
@@ -39,7 +38,7 @@ def get_video_id(url):
 def add_to_playlist(playlistId, videoId):
     print(f"Adding {videoId} to playlist {playlistId}")
     response = ytmusic.add_playlist_items(playlistId, [videoId])
-    print(f"Added {videoId} to playlist {playlistId}")
+    
     return response
     
     
@@ -83,7 +82,7 @@ def get_video_id_from_share_link(url):
     response = requests.get(url)
     if response.status_code == 200:
         text = response.text
-        id_start = text.find('QcxdDafgmYc')
+        
         start_index = text.find('originalUrl')
         #print(f"Start index: {start_index}, id_start: {id_start}")
         if start_index != -1:

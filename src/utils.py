@@ -1,4 +1,19 @@
 import discord
+
+
+import logging 
+from logging import StreamHandler, FileHandler
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+handler = StreamHandler()
+handler.setLevel(logging.INFO)
+logger.addHandler(handler)
+file_handler = FileHandler('app.log')
+file_handler.setLevel(logging.INFO)
+logger.addHandler(file_handler)
+
 def look_for_url(message: discord.Message | dict) -> str:
     """
     Check if the message contains a YouTube URL.
